@@ -1,0 +1,96 @@
+<div class="container" *ngIf="event">
+    <div class="row">
+        <h2>Edit Event {{event.id}}</h2>
+    </div>
+    <div class="row">
+        <div clas="col-12">
+            <form name="editEventForm" id="editEventForm" #editEventForm="ngForm" (ngSubmit)="editEvent($event)">
+                <fieldset>
+                    <div class="form-group row">
+                        <label class="col-3 form-control-label font-weight-bold" for="titleEdit">Title:</label>
+                        <div class="col-9">
+                            <input type="text" id="titleEdit" name="titleEdit" placeholder={{event.title}}
+                                #titleField="ngModel" [(ngModel)]="eventEdit.title" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-3 form-control-label font-weight-bold" for="shortDescriptionEdit">Short
+                            Description:</label>
+                        <div class="col-9">
+                            <input type="text" id="shortDescriptionEdit" name="shortDescriptionEdit"
+                                placeholder="{{event.shortDescription}}" #shortDescriptionEdit="ngModel"
+                                [(ngModel)]="eventEdit.shortDescription" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-3 form-control-label font-weight-bold" for="longDescription">Long Description:</label>
+                        <div class="col-9">
+                            <input type="text" id="longDescriptionEdit" name="longDescriptionEdit"
+                                #longDescriptionEdit="ngModel" placeholder="{{event.longDescription}}"
+                                [(ngModel)]="eventEdit.longDescription" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-3 form-control-label font-weight-bold" for="publishedDateEdit">Published Date:</label>
+                        <div class="col-9">
+                            <input type="text" id="publishedDateEdit" name="publishedDateEdit"
+                                #longDescriptionEdit="ngModel" placeholder= "{{event.publishedDate | date:'MM/dd/yyyy'}}"
+                                [(ngModel)]="eventEdit.publishedDate" class="form-control" onfocus="(this.type='date')" onblur="(this.type='text')"/>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-3 form-control-label font-weight-bold" for="isPublishedEdit">Publication:</label>
+                        <div class="col-9">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="isPublishedEdit" id="isPublishedEdit" [value]="true" [(ngModel)]="eventEdit.isPublished">
+                                <label class="form-check-label text-primary" for="isPublishedEdit">Published</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="isPublishedEdit" id="isPublishedEdit" [value]="false" [(ngModel)]="eventEdit.isPublished">
+                                <label class="form-check-label text-secondary" for="isPublishedEdit">Unpublished</label>
+                              </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-3 form-control-label font-weight-bold" for="isActiveEdit">Status:</label>
+                        <div class="col-9">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="isActiveEdit" id="isActiveEdit" [value]="true" [(ngModel)]="eventEdit.isActive">
+                                <label class="form-check-label text-success" for="isActiveEdit">Active</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="isActiveEdit" id="isActiveEdit" [value]="false" [(ngModel)]="eventEdit.isActive">
+                                <label class="form-check-label text-danger" for="isActiveEdit">Inactive</label>
+                              </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-3 form-control-label font-weight-bold" for="dateCreatedEdit">Date Created:</label>
+                        <div class="col-9">
+                            <input type="text" id="dateCreatedEdit" name="dateCreatedEdit"
+                                #longDescriptionEdit="ngModel" placeholder= "{{event.dateCreated | date:'MM/dd/yyyy'}}"
+                                [(ngModel)]="eventEdit.dateCreated" class="form-control" onfocus="(this.type='date')" onblur="(this.type='text')"/>
+                        </div>
+                    </div>
+                    <div *ngIf="invalidPublished" class="form-group row">
+                        <div class="col-12">
+                            <span class="alert alert-danger">Invalid! Must have a published date for option "Published" of Publication</span>
+                        </div>
+                    </div>
+                   
+                    <div class="form-group row">
+                        <div class="col-12">
+                            <div class=" float-right">
+                                <button type="submit" class="btn btn-primary mr-1">Edit</button>
+                                <button type="reset" class="btn btn-warning ml-1">Reset</button>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <a routerLink="../../" routerLinkActive="active" class="btn btn-primary">&lt;Back to Events</a>
+    </div>
+</div>

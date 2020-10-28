@@ -1,0 +1,38 @@
+<div class="container" *ngIf="user">
+    <div class="row">
+        <h2>View Profile of {{user.username}}</h2>
+    </div>
+    <div class="row">
+        <div>
+            <label class="control-label font-weight-bold mr-1">Username:</label>
+            <label class="control-label ml-1">{{user.username}}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            <label class="control-label font-weight-bold mr-1">First Name:</label>
+            <label class="control-label ml-1">{{user.firstName}}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            <label class="control-label font-weight-bold mr-1">Last Name:</label>
+            <label class="control-label ml-1">{{user.lastName}}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            <label class="control-label font-weight-bold mr-1">Email:</label>
+            <label class="control-label ml-1">{{user.email}}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            <label class="control-label font-weight-bold mr-1">Mobile:</label>
+            <label class="control-label ml-1">{{user.mobile}}</label>
+        </div>
+    </div>
+    <div class="row">
+        <a routerLink="" class="btn btn-primary">&lt;Back to Home</a>
+    </div>
+</div>

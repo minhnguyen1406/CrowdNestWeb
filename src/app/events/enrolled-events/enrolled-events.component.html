@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <header>
+                <h3>Enrolled Events List</h3>
+            </header>
+        </div>
+
+    </div>
+    <div class="row mt-2">
+        <div class="col-12">
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th class="text-center">Id</th>
+                        <th class="text-center">Title</th>
+                        <th class="text-center">Created Date</th>
+                        <th class="text-center">Published Date</th>
+                        <th class="text-center">Status</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    <tr *ngFor="let event of events">
+                        <td>{{event.id}}</td>
+                        <td>{{event.title}}</td>
+                        <td>{{event.dateCreated | date}}</td>
+                        <td>{{event.publishedDate | date}}</td>
+                        <td [ngClass]="{'text-success': event.isActive , 'text-danger': !event.isActive}">
+                            {{event.isActive ? 'Active' : 'Inactive'}}</td>
+                        <td>
+                            <a class="btn btn-link" routerLink="/enrolled-events/view/{{event.id}}"
+                                routerLinkActive="active">View</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

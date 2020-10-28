@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <header>
+                <h3>Events List</h3>
+            </header>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12"  *ngIf="isAuthenticated">
+            <app-event-filter (emitFilter)="onFilter($event)"></app-event-filter>
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col-12">
+            <div class=" float-right" *ngIf="isAuthenticated && isAdmin">
+                <button class="btn btn-primary" (click)="onAddEventSelected()">Add New Event</button>
+            </div>
+        </div>
+    </div>
+    <ng-container *ngIf="isAuthenticated && isAdmin && isAddEvent">
+        <app-event-add (emitAdd)="onAdd($event)"></app-event-add>
+    </ng-container>
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th class="text-center">Id</th>
+                        <th class="text-center">Title</th>
+                        <th class="text-center">Created Date</th>
+                        <th class="text-center">Published Date</th>
+                        <th class="text-center" *ngIf="isAuthenticated">Status</th>
+                        <th class="text-center">Action</th>
+                        <th class="text-center" *ngIf="isAuthenticated && isAdmin">Publish</th>
+                        <th class="text-center" *ngIf="!isAdmin">Enroll</th>
+                        <th class="text-center" *ngIf="!isAdmin">Withdraw</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    <tr *ngFor="let event of events; let i = index">
+                        <td>{{event.id}}</td>
+                        <td>{{event.title}}</td>
+                        <td>{{event.dateCreated | date}}</td>
+                        <td>{{event.publishedDate | date}}</td>
+                        <td *ngIf="isAuthenticated"
+                            [ngClass]="{'text-success': event.isActive , 'text-danger': !event.isActive}">
+                            {{event.isActive ? 'Active' : 'Inactive'}}</td>
+                        <td>
+                            <a class="btn btn-link" routerLink="/events/view/{{event.id}}"
+                                routerLinkActive="active">View</a>
+                            <ng-container *ngIf="isAuthenticated && isAdmin">
+                                <a class="btn btn-link" routerLink="/events/edit/{{event.id}}"
+                                    routerLinkActive="active">Edit</a>
+                                <a class="btn btn-link" (click)="onRemoveEvent(event)">Remove</a>
+                            </ng-container>
+                        </td>
+                        <td *ngIf="isAuthenticated && isAdmin">
+                            <a class="btn btn-primary" [ngClass]="{'disabled': event.isPublished}"
+                                (click)="onPublishEvent(event)">Publish Event</a>
+                        </td>   
+                        <td *ngIf="!isAdmin">
+                            <a class="btn btn-primary" [ngClass]="{'disabled': !event.isActive || isEnrolled[i] }"
+                                (click)="onEnrollEvent(event)">{{isEnrolled[i] ? 'Enrolled' : 'Enroll'}}</a>
+                        </td>
+                        <td *ngIf="!isAdmin">
+                            <a class="btn btn-danger" [ngClass]="{'disabled': !event.isActive || !isEnrolled[i]}"
+                                (click)="onWithdrawEvent(event)">Withdraw</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,42 @@
+<div class="row mt-2">
+    <div class="col-12">
+        <form name="filterEventForm" id="filterEventForm" #filterEventForm="ngForm" (ngSubmit)="filter($event)">
+            <div class="row">
+                <div class="col-4">
+                        <label class="col-2 form-control-label font-weight-bold" for="isPublishedFilter">Publication:</label>
+                    <div class="col-2">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="isPublishedFilter" [value]="true"
+                                id="isPublishedFilter" [(ngModel)]="isPublishedFilter">
+                            <label class="form-check-label text-primary" for="isPublishedFilter">Published</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="isPublishedFilter" [value]="false"
+                                id="isPublishedFilter" [(ngModel)]="isPublishedFilter">
+                            <label class="form-check-label text-secondary" for="isPublishedFilter">Unpublished</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                        <label class="col-2 form-control-label font-weight-bold" for="isActiveFilter">Status:</label>
+                    <div class="col-2">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="isActiveFilter" [value]="true"
+                                id="isActiveFilter" [(ngModel)]="isActiveFilter">
+                            <label class="form-check-label text-success" for="isActiveFilter">Active</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="isActiveFilter" [value]="false"
+                                id="isActiveFilter" [(ngModel)]="isActiveFilter">
+                            <label class="form-check-label text-danger" for="isActiveFilter">Inactive</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <button type="submit" class="btn btn-info mr-1">Filter</button>
+                    <button type="reset" class="btn btn-warning ml-1">Reset</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

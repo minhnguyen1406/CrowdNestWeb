@@ -1,0 +1,52 @@
+<div class="container" *ngIf="event">
+    <div class="row">
+        <h2>View Event {{event.id}}</h2>
+    </div>
+    <div class="row">
+        <div>
+            <label class="control-label font-weight-bold mr-1">Title:</label>
+            <label class="control-label ml-1">{{event.title}}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div >
+            <label class="control-label font-weight-bold mr-1">Short Description:</label>
+            <label class="control-label ml-1">{{event.shortDescription}}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div >
+            <label class="control-label font-weight-bold mr-1">Long Description:</label>
+            <label class="control-label ml-1">{{event.longDescription}}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div >
+            <label class="control-label font-weight-bold mr-1">Publish Date:</label>
+            <label class="control-label ml-1">{{event.publishedDate | date}}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div >
+            <label class="control-label font-weight-bold mr-1">Publication:</label>
+            <label class="control-label ml-1"
+                [ngClass]="{'text-primary': event.isPublished , 'text-secondary': !event.isPublished}">{{event.isPublished ? 'Published' : 'Unpublished'}}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div >
+            <label class="control-label font-weight-bold mr-1">Status:</label>
+            <label class="control-label ml-1"
+                [ngClass]="{'text-success': event.isActive , 'text-danger': !event.isActive}">{{event.isActive ? 'Active' : 'Inactive'}}</label>
+        </div>
+    </div>
+    <div class="row">
+        <div >
+            <label class="control-label font-weight-bold mr-1">Date Created:</label>
+            <label class="control-label ml-1">{{event.dateCreated | date}}</label>
+        </div>
+    </div>
+    <div class="row">
+        <a routerLink="../../" routerLinkActive="active" class="btn btn-primary">&lt;Back to Events</a>
+    </div>
+</div>

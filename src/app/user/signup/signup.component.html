@@ -1,0 +1,83 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h3>Sign Up</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+                <form id="signUpForm" name="signUpForm" [formGroup]="signUpForm" (ngSubmit)="signUpEvent($event)">
+                    <div class="form-group row">
+                        <label class="col-3 form-control-label font-weight-bold" for="usernameSignUp">Username: </label>
+                        <div class="col-9">
+                            <input type="text" id="usernameSignUp" name="usernameSignUp" formControlName="usernameSignUp" class="form-control" required />
+                        </div>
+                        <div *ngIf="signUpForm.get('usernameSignUp').invalid && isSubmitted">
+                            <span class="alert alert-danger">Username field is required.</span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-3 form-control-label font-weight-bold" for="passwordSignUp">Password: </label>
+                        <div class="col-9">
+                            <input type="password" id="passwordSignUp" formControlName="passwordSignUp" class="form-control" required />
+                        </div>
+                        <div *ngIf="signUpForm.get('passwordSignUp').invalid && isSubmitted">
+                            <span class="alert alert-danger">Password field is required.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-3 form-control-label font-weight-bold" for="firstNameSignUp">First Name:
+                        </label>
+                        <div class="col-9">
+                            <input type="text" id="firstNameSignUp" formControlName="firstNameSignUp"
+                                class="form-control" />
+                        </div>
+                        <div *ngIf="signUpForm.get('firstNameSignUp').invalid && isSubmitted">
+                            <span class="alert alert-danger">First Name field is required.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-3 form-control-label font-weight-bold" for="lastNameSignUp">Last Name:
+                        </label>
+                        <div class="col-9">
+                            <input type="text" id="lastNameSignUp" formControlName="lastNameSignUp"
+                                class="form-control" />
+                        </div>
+                        
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-3 form-control-label font-weight-bold" for="emailSignUp">Email: </label>
+                        <div class="col-9">
+                            <input type="text" id="emailSignUp" formControlName="emailSignUp"
+                                class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-3 form-control-label font-weight-bold" for="mobileSignUp">Mobile: </label>
+                        <div class="col-9">
+                            <input type="text" id="mobileSignUp" formControlName="mobileSignUp"
+                                class="form-control" />
+                        </div>
+                    </div>
+                    <div *ngIf="invalidUsername" class="form-group row">
+                        <div class="col-12">
+                            <span class="alert alert-danger">Username already exists. Please try again!</span>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-12">
+                            <div class=" float-right">
+                                <button type="submit" class="btn btn-primary mr-1">Sign Up</button>
+                                <button type="reset" class="btn btn-warning ml-1">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+        </div>
+    </div>
+</div>

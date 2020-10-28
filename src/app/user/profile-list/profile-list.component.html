@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <header>
+                <h3>Profiles List</h3>
+            </header>
+        </div>
+
+    </div>
+    <div class="row mt-2">
+        <div class="col-12">
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th class="text-center">Id</th>
+                        <th class="text-center">Username</th>
+                        <th class="text-center">First Name</th>
+                        <th class="text-center">Last Name</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">Mobile</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    <tr *ngFor="let user of users">
+                        <td>{{user.id}}</td>
+                        <td>{{user.username}}</td>
+                        <td>{{user.firstName}}</td>
+                        <td>{{user.lastName}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.mobile}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <a class="btn btn-primary mr-1" [ngClass]="{'disabled': isDisabledFirst}" (click)="firstPage()">First</a>
+            <a class="btn btn-primary ml-1 mr-1" [ngClass]="{'disabled': isDisabledPrev}" (click)="previousPage()">Previous</a>
+            <a class="btn btn-primary ml-1 mr-1" [ngClass]="{'disabled': isDisabledNext}" (click)="nextPage()">Next</a>
+            <a class="btn btn-primary ml-1" [ngClass]="{'disabled': isDisabledLast}" (click)="lastPage()">Last</a>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
